@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* QuarterpillarsAdminTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* QuarterpillarsAdminTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-QuarterpillarsAdmin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-QuarterpillarsAdmin.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */; };
+		6A78BA8DE4C1941F0EB6DA2C /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FD3FE678935797115A17A6 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A16DB6F1C4DA218AE03A0A63 /* libPods-QuarterpillarsAdmin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A6233A70D77223D62C50E9 /* libPods-QuarterpillarsAdmin.a */; };
+		E9E7DBF16D784C4A80C3C12F /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A8DBCD08B4EECA3AA5CBC /* package.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +37,16 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = QuarterpillarsAdmin/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = QuarterpillarsAdmin/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = QuarterpillarsAdmin/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-QuarterpillarsAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin.debug.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-QuarterpillarsAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin.release.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-QuarterpillarsAdmin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuarterpillarsAdmin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2408492946EC32B76DC821DE /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig"; sourceTree = "<group>"; };
+		5580489DF451B271BBA0D990 /* Pods-QuarterpillarsAdminTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdminTests.debug.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdminTests/Pods-QuarterpillarsAdminTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5D13927E8FD2A39F6D865AEA /* Pods-QuarterpillarsAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin.release.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin.release.xcconfig"; sourceTree = "<group>"; };
+		63FD3FE678935797115A17A6 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D8932A59DFA377FA8B833C /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E1A8DBCD08B4EECA3AA5CBC /* package.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = package.json; path = ../package.json; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = QuarterpillarsAdmin/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig"; sourceTree = "<group>"; };
+		85A6233A70D77223D62C50E9 /* libPods-QuarterpillarsAdmin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuarterpillarsAdmin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91194D7DF9E2E8666007346B /* Pods-QuarterpillarsAdminTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdminTests.release.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdminTests/Pods-QuarterpillarsAdminTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6B4BEC8387BAD1B36C07E71 /* Pods-QuarterpillarsAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin.debug.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a in Frameworks */,
+				6A78BA8DE4C1941F0EB6DA2C /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-QuarterpillarsAdmin.a in Frameworks */,
+				A16DB6F1C4DA218AE03A0A63 /* libPods-QuarterpillarsAdmin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,10 +104,19 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-QuarterpillarsAdmin.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */,
+				85A6233A70D77223D62C50E9 /* libPods-QuarterpillarsAdmin.a */,
+				63FD3FE678935797115A17A6 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F904B9ED9224A5E89D319A5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A8DBCD08B4EECA3AA5CBC /* package.json */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -122,6 +135,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				2F904B9ED9224A5E89D319A5 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -140,10 +154,12 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-QuarterpillarsAdmin.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-QuarterpillarsAdmin.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig */,
+				A6B4BEC8387BAD1B36C07E71 /* Pods-QuarterpillarsAdmin.debug.xcconfig */,
+				5D13927E8FD2A39F6D865AEA /* Pods-QuarterpillarsAdmin.release.xcconfig */,
+				5580489DF451B271BBA0D990 /* Pods-QuarterpillarsAdminTests.debug.xcconfig */,
+				91194D7DF9E2E8666007346B /* Pods-QuarterpillarsAdminTests.release.xcconfig */,
+				64D8932A59DFA377FA8B833C /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig */,
+				2408492946EC32B76DC821DE /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "QuarterpillarsAdminTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				49CA686C524D5AF01D81B946 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				84AB6CCA70016632EEE084E4 /* [CP] Embed Pods Frameworks */,
+				3984A3E9881D2540F1D8DB88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +192,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "QuarterpillarsAdmin" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				CE631DC7544CF58ED063F5A8 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				4F9D1ABC5ADB8A8168B85EAE /* [CP] Embed Pods Frameworks */,
+				D21A8E2C275B047C0384F102 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,6 +260,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E9E7DBF16D784C4A80C3C12F /* package.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,24 +283,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		3984A3E9881D2540F1D8DB88 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		49CA686C524D5AF01D81B946 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,7 +322,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		4F9D1ABC5ADB8A8168B85EAE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84AB6CCA70016632EEE084E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE631DC7544CF58ED063F5A8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,24 +378,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		D21A8E2C275B047C0384F102 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -359,23 +393,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -430,7 +447,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig */;
+			baseConfigurationReference = 64D8932A59DFA377FA8B833C /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -457,7 +474,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig */;
+			baseConfigurationReference = 2408492946EC32B76DC821DE /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -481,7 +498,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-QuarterpillarsAdmin.debug.xcconfig */;
+			baseConfigurationReference = A6B4BEC8387BAD1B36C07E71 /* Pods-QuarterpillarsAdmin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -507,7 +524,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-QuarterpillarsAdmin.release.xcconfig */;
+			baseConfigurationReference = 5D13927E8FD2A39F6D865AEA /* Pods-QuarterpillarsAdmin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
