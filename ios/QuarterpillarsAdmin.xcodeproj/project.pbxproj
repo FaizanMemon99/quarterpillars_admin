@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		6A78BA8DE4C1941F0EB6DA2C /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FD3FE678935797115A17A6 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9FD65B34297E79920007F612 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 9FD65B33297E79910007F612 /* fonts */; };
 		A16DB6F1C4DA218AE03A0A63 /* libPods-QuarterpillarsAdmin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A6233A70D77223D62C50E9 /* libPods-QuarterpillarsAdmin.a */; };
 		E9E7DBF16D784C4A80C3C12F /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A8DBCD08B4EECA3AA5CBC /* package.json */; };
 /* End PBXBuildFile section */
@@ -42,10 +43,11 @@
 		5D13927E8FD2A39F6D865AEA /* Pods-QuarterpillarsAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin.release.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin.release.xcconfig"; sourceTree = "<group>"; };
 		63FD3FE678935797115A17A6 /* libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuarterpillarsAdmin-QuarterpillarsAdminTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D8932A59DFA377FA8B833C /* Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests/Pods-QuarterpillarsAdmin-QuarterpillarsAdminTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6E1A8DBCD08B4EECA3AA5CBC /* package.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = package.json; path = ../package.json; sourceTree = "<group>"; };
+		6E1A8DBCD08B4EECA3AA5CBC /* package.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = package.json; path = ../package.json; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = QuarterpillarsAdmin/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85A6233A70D77223D62C50E9 /* libPods-QuarterpillarsAdmin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuarterpillarsAdmin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91194D7DF9E2E8666007346B /* Pods-QuarterpillarsAdminTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdminTests.release.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdminTests/Pods-QuarterpillarsAdminTests.release.xcconfig"; sourceTree = "<group>"; };
+		9FD65B33297E79910007F612 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		A6B4BEC8387BAD1B36C07E71 /* Pods-QuarterpillarsAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuarterpillarsAdmin.debug.xcconfig"; path = "Target Support Files/Pods-QuarterpillarsAdmin/Pods-QuarterpillarsAdmin.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -116,7 +118,6 @@
 				6E1A8DBCD08B4EECA3AA5CBC /* package.json */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -129,6 +130,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				9FD65B33297E79910007F612 /* fonts */,
 				13B07FAE1A68108700A75B9A /* QuarterpillarsAdmin */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* QuarterpillarsAdminTests */,
@@ -261,6 +263,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E9E7DBF16D784C4A80C3C12F /* package.json in Resources */,
+				9FD65B34297E79920007F612 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

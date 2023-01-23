@@ -10,7 +10,7 @@ import {
  } from 'react-native'
 
  import { useNavigation } from '@react-navigation/native'
-// import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
 import Videos from "../assets/staticVideos/Videos"
@@ -78,11 +78,12 @@ const HomeScreen=(props)=>{
                     <TextInput value={LoginId} style={styles.textInput} placeholder='Email ID' onChangeText={setLoginId} autoFocus/>
                     <View style={{flex: 1, width: '100%', alignItems: 'center',}}>
                         <TextInput value={Password} style={styles.textInput} placeholder='Password' secureTextEntry={!showPass} onChangeText={setPassword}/>
-                        
+                        <Icon name={showPass?'eye-slash':'eye'} style={styles.eyeIcon} onPress={()=>setShowPass(!showPass)} />
+
                     </View>
                     <View style={{flex:1,width:"100%",alignItems:"flex-end"}}>
                     <Text style={styles.forgotPassLink} 
-                    // onPress={gotoForgotPass}
+                    onPress={()=>navigation.navigate("/forgotPassword")}
                     >Forgot Password</Text>
                     </View>
                 </View>
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
     },
     eyeIcon: {
         position: 'absolute',
-        top: 34,
+        top: 30,
         right: 25,
         color: '#999999',
         fontSize: 24,
