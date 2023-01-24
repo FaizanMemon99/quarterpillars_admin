@@ -7,8 +7,10 @@ const Pageformat=(props)=>{
     return(
     <View style={styles.pageWrapper}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Pressable onPress={() => navigation.navigate(props?.goBackLink ? props?.goBackLink : "/")}>
-                <Fontawesome name="left" size={24} color="black" style={{ paddingLeft: 20 }} />
+                <Pressable onPress={() => navigation.navigate(props?.goBackLink ? props?.goBackLink : "/",{
+                    type:props?.goBackLinkProps
+                })}>
+                <Fontawesome name="left" size={24} color="black" style={{ paddingLeft: 10 }} />
             </Pressable>
             <Text style={styles.headText}>
                 {props?.headText ? props?.headText : ""}
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
       "fontSize": 24,
       "lineHeight":33,
       "color": "#000000",
-      paddingLeft:20
+      paddingLeft:15
     },
     descriptionText:{
         "fontFamily": "Avenir",

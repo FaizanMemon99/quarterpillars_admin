@@ -7,6 +7,10 @@ import {
     Pressable,
     TextInput,
     ActivityIndicator,
+    Platform,
+    ImageBackground,
+    ToastAndroid,
+    Alert
  } from 'react-native'
 
  import { useNavigation } from '@react-navigation/native'
@@ -14,21 +18,38 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
 import Videos from "../assets/staticVideos/Videos"
-import showToastmsg from '../../common/showToastmsg'
 import Constants from '../../common/Constants'
 import Images from "../assets/images/Images"
 import Video from 'react-native-video'
 import globalStyles from "../../common/globalStyles"
-const HomeScreen=(props)=>{
+const LoginScreen=(props)=>{
     const navigation  = useNavigation()
     const [showPass, setShowPass] = useState(false)
     const [IsLoading, setIsLoading] = useState(false)
     const [LoginId, setLoginId] = useState('')
     const [Password, setPassword] = useState('')
-    
+    const signInVerification=()=>{
+        if(!LoginId||LoginId==""){
+            if(Platform.OS=="android")
+            ToastAndroid.show('Please Enter Login Id', ToastAndroid.SHORT);
+            else
+            Alert.alert("Please Enter Login Id",{cancelable:true})
+        }
+        else if(!Password||Password==""){
+            if(Platform.OS=="android")
+            ToastAndroid.show('Please Enter Password', ToastAndroid.SHORT);
+            else 
+            Alert.alert("Please Enter Password",{cancelable:true})
+        }
+        else {
+            navigation.navigate("/home")
+        }
+    }
     return (
         <View style={styles.background}>
-        <Video
+        
+        {Platform.OS=="android"?
+            <Video
         source={Videos.businessVideo}
         // onBandwidthUpdate={()=>console.log("bandwidht")}
         // onBuffer={()=>console.log("buffering...")}
@@ -63,6 +84,12 @@ const HomeScreen=(props)=>{
             },
 
         }} />
+    :
+    <Image
+    source={Images.adminBackgroundImage}
+    style={{width:"100%",resizeMode:"cover"}}
+    /> 
+    }
 
                 
             <View style={globalStyles.overlay}></View>
@@ -89,7 +116,7 @@ const HomeScreen=(props)=>{
                 </View>
                 <Text style={styles.belowPhoneNumber}></Text>
                 {IsLoading?<ActivityIndicator size={30} color={Constants.colors.whiteColor} />:<Pressable style={[globalStyles.button, {width: '92%', marginTop: 0,}]}
-                //  onPress={signinverificatoin}
+                 onPress={signInVerification}
                  ><Text style={[globalStyles.btnText,{textTransform:"none"}]}>Sign In</Text></Pressable>}
                 
             </View>
@@ -203,4 +230,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default HomeScreen
+export default LoginScreen

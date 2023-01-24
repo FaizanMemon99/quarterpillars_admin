@@ -11,6 +11,7 @@ const Constants = {
         inputBgColor: '#F5FFFA',
         textColor: '#000000',
         whiteColor: '#FFFFFF',
+        panelColor:"#043810"
     },
     fontFamily: 'Avenir-Light',
     borderRadius: 10,
