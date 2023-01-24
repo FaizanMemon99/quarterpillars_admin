@@ -42,6 +42,10 @@ const LoginScreen=(props)=>{
             Alert.alert("Please Enter Password",{cancelable:true})
         }
         else {
+            if(Platform.OS=="android")
+            ToastAndroid.show('Login Successful.', ToastAndroid.SHORT);
+            else 
+            Alert.alert("Login Successful.",{cancelable:true})
             navigation.navigate("/home")
         }
     }

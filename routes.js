@@ -6,6 +6,8 @@ import ForgotPassword from './src/components/ForgotPassword/forgotPassword';
 import HomeScreen from './src/components/Home/HomeScreen';
 import ViewUser from './src/components/Home/ViewUser';
 import DeliverySummary from './src/components/Delivery/DeliverySummary';
+import SupportEmail from './src/components/SupportEmail/supportEmail';
+import EmailSummary from './src/components/SupportEmail/EmailSummary';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +33,14 @@ const Routes = () => {
         <Stack.Screen
         name="/delivery-summary"
         component={DeliverySummary}
+        />
+        <Stack.Screen
+        name="/support-emails"
+        component={SupportEmail}
+        />
+        <Stack.Screen
+        name='/email-summary'
+        component={EmailSummary}
         />
       </Stack.Navigator>
   );

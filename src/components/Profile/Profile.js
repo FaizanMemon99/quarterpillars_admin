@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pressable, StyleSheet, Image, View, Text } from 'react-native'
+import { Pressable, StyleSheet, Image, View, Text,TextInput, Platform } from 'react-native'
 import Images from '../../assets/images/Images'
 import Constants from '../../../common/Constants'
  const Profile = (props) => {
@@ -21,49 +21,93 @@ import Constants from '../../../common/Constants'
                             <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"300",width:"40%"}]}>
                             Name
                             </Text>
-                            <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
+                            {props?.editStatus?
+                                <TextInput 
+                                // value={LoginId} 
+                                style={{
+                                    marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Name' 
+                                // onChangeText={setLoginId}
+                                 />
+                                :
+                                <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
                             Mr. User Admin
-                            </Text>
+                            </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
                             <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"300",width:"40%"}]}>
                             Email
                             </Text>
-                            <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
+                            {props?.editStatus?
+                                <TextInput 
+                                // value={LoginId} 
+                                style={{
+                                    marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Email' 
+                                // onChangeText={setLoginId}
+                                 />
+                                :<Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
                             johndoe@gmail.com
-                            </Text>
+                            </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
                             <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"300",width:"40%"}]}>
                             Phone Number
                             </Text>
-                            <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
+                            {props?.editStatus?
+                                <TextInput 
+                                // value={LoginId} 
+                                style={{
+                                    marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Phone Number' 
+                                // onChangeText={setLoginId}
+                                 />
+                                :<Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
                             +91 9827336473
-                            </Text>
+                            </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
                             <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"300",width:"40%"}]}>
                             Gender
                             </Text>
-                            <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
+                            {props?.editStatus?
+                                <TextInput 
+                                // value={LoginId} 
+                                style={{
+                                    marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Gender' 
+                                // onChangeText={setLoginId}
+                                 />
+                                :<Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
                             -
-                            </Text>
+                            </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
                             <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"300",width:"40%"}]}>
                             Age
                             </Text>
-                            <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
+                            {props?.editStatus?
+                                <TextInput 
+                                // value={LoginId} 
+                                style={{
+                                    marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Age' 
+                                // onChangeText={setLoginId}
+                                 />
+                                : <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
                             -
-                            </Text>
+                            </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
                             <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"300",width:"40%"}]}>
                             DOB
                             </Text>
-                            <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
+                            {props?.editStatus?
+                                <TextInput 
+                                // value={LoginId} 
+                                style={{
+                                    marginTop: Platform.OS=="android"?-15:0,
+                                    width:"60%"}} placeholder='DOB' 
+                                // onChangeText={setLoginId}
+                                 />
+                                : <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
                             -
-                            </Text>
+                            </Text>}
                             </View>
                             </View>
         </View>

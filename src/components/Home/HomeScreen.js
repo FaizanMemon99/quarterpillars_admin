@@ -22,10 +22,15 @@ const HomeScreen=(props)=>{
     const [showDrawer,setshowDrawer]=useState(false)
     const [activeMenu, setActiveMenu] = useState('')
     const [activeTab,setactiveTab]=useState("home")
+    const [editStatus,seteditStatus]=useState(false)
     useEffect(()=>{
         if(props?.route?.params?.type)
         setactiveTab(props?.route?.params?.type)
+        seteditStatus(false)
     },[props])
+    useEffect(()=>{
+        seteditStatus(false)
+    },[activeTab])
     return(
         <View style={[globalStyles.wrapper,{backgroundColor:"#e5e5e5",height:"100%"}]}>
         {
@@ -48,7 +53,7 @@ const HomeScreen=(props)=>{
             <View style={styles.header}>
 
                 <View style={styles.profileDetails}>
-                    <Pressable onPress={()=>setshowDrawer(!showDrawer)} style={{ zIndex: 999, paddingTop: 10 }}><AntDesign name='close' size={26} color={"#fff"} style={{ paddingRight: 10 }} /></Pressable>
+                    <Pressable onPress={()=>setshowDrawer(!showDrawer)} style={{ zIndex: 999,position:"absolute",left:"120%",top:0 }}><AntDesign name='close' size={26}/></Pressable>
                     <View style={styles.profileIcon}>
                         <Image source={Images.avatar} 
                         // style={{resizeMode:"stretch"}}
@@ -91,12 +96,13 @@ const HomeScreen=(props)=>{
             </Pressable>
         </View>}
         <Animated.View style={{
-            opacity: showDrawer ? Platform.OS=="android"?0.3:0 : 1, position: 'absolute',top:0, zIndex: 1,right: 0, bottom: 0, left: 0,height:"100%", backgroundColor: '#E5E5E5', transform: [
+            opacity: showDrawer ? Platform.OS=="android"?0.3:.3 : 1, position: 'absolute',top:0, zIndex: 1,right: 0, bottom: 0, left: showDrawer?"60%":0,height:"100%", backgroundColor: '#E5E5E5', transform: [
                 { scale: scaleValue ? scaleValue : 0 },
-                { translateX: offsetValue ? offsetValue : 0 }
-            ]
+                { translateX: offsetValue ? offsetValue : 0 },
+            ],
+            width:"100%",
         }}>
-        <View style={[styles.logoContainer, {marginTop:27,marginStart:24,marginBottom:25}]}>
+        <View style={[styles.logoContainer, {marginTop:27,marginStart:24,marginBottom:25,}]}>
                       <Pressable onPress={()=>setshowDrawer(!showDrawer)} style={{zIndex: 999,marginTop:10}}>
                             {
                                 !showDrawer?<Image source={Images.hamburgerMenuIcon} />:<AntDesign name='close' size={26} />
@@ -107,16 +113,26 @@ const HomeScreen=(props)=>{
                                 <View style={{marginStart: 26}}>
                                     <View style={{width:Constants.width,display:'flex',alignItems:'center',flexDirection:'row'}}>
                                     <Text style={styles.welcome}>Hello!</Text>
-                                    {activeTab==="profile"&&<Feather name="edit-2" size={20} style={{paddingStart:200}}/>}
+                                    {activeTab==="profile"&&!editStatus&&<Feather name="edit-2" size={20} style={{paddingStart:200}}
+                                    onPress={()=>seteditStatus(true)}
+                                    />}
+                                    {editStatus&&activeTab==="profile"&&
+<Pressable style={[globalStyles.button, { width:"auto",marginTop: 0,marginStart:170,backgroundColor:"transparent",borderColor:Constants.colors.primaryColor,borderWidth:1}]}
+                 onPress={()=>seteditStatus(false)}
+                 ><Text style={[globalStyles.btnText,{textTransform:"none",color:Constants.colors.primaryColor}]}>Save</Text></Pressable>
+                                    }
                                     {/* <FontAwesome5Icon name="pen" size={20} style={{paddingLeft:100}}/> */}
                                     </View>
                                     <Text style={styles.companyName}>Mr. User Admin</Text>
                                 </View>
                                 
                     </View>
-                    <ScrollView style={{height:"100%",flex:1,marginBottom:100}}>
+                    <ScrollView style={{height:"100%",flex:1,marginBottom:5}}>
                     {activeTab==="profile"?
-                    <Profile/>
+                    <Profile
+                    editStatus={editStatus}
+                    seteditStatus={seteditStatus}
+                    />
                     :
                     activeTab==="delivery"?
                     <Delivery/>:
@@ -125,7 +141,7 @@ const HomeScreen=(props)=>{
                     <Home/>
                     }
                     </ScrollView>
-                    <View style={[styles.container, {borderBottomLeftRadius: showDrawer?30:0}]}>
+                    <View style={[styles.container, {borderBottomLeftRadius: showDrawer?0:0}]}>
             <Pressable onPress={()=>setactiveTab('home')} style={[styles.tabItem]}>
                 <AntDesign name='home' style={[styles.tabIcon, {color: activeTab==='home'?Constants.colors.primaryColor:'#BBBBBB',}]} />
                 <Text style={[styles.tabLabel, {color: activeTab==='home'?Constants.colors.primaryColor:'#BBBBBB', }]}>Home</Text>
@@ -208,7 +224,7 @@ const styles = StyleSheet.create({
     menubg: {
         flex: 1,
         zIndex: 9999,
-        width: '70%',
+        width: '60%',
         color:Constants.colors.whiteColor,
         backgroundColor: Constants.colors.panelColor,
     },          
@@ -254,7 +270,7 @@ const styles = StyleSheet.create({
         // paddingLeft: 0,
         flexGrow: 1,
         opacity:1,
-        zIndex:9999
+        zIndex:9
     },
     welcome: {
         "fontFamily": "Avenir",
@@ -278,7 +294,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 50,
         justifyContent: 'space-between',
         flexDirection: 'row',
-        position: 'absolute',
+        position: 'relative',
         bottom: 0,
         left: 0,
         right: 0,
