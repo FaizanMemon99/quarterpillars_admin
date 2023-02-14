@@ -35,7 +35,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
         <Pressable style={styles.cameraContainer} >
                                 <Image source={
                                     userData?.image?
-                                    {url:`${Constants.BASE_IMAGE_URL}${JSON.parse(userData.image)}`}
+                                    {uri:`${Constants.BASE_IMAGE_URL}${JSON.parse(userData.image)}`}
                                     :
                                     Images.userInfoLogo} style={styles.logo} />
                                 <Image source={Images.cameraIcontTwo} style={styles.cameraIcon} />

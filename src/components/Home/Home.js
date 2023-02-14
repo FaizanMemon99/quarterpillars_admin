@@ -66,9 +66,9 @@ const Home = (props) => {
                                                             <View style={{ flex: 5 }}>
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
-                                                                    ...styles.progressBarFront, width:
+                                                                    ...styles.progressBarFront, width:dashboardData?.UserData?
                                                                         (parseInt(dashboardData?.UserData?.Explorer)/
-                                                                        parseInt(dashboardData?.TotalUser))*100
+                                                                        parseInt(dashboardData?.TotalUser))*100:0
                                                                 }}></View></View>
                                                             <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
                                                             {dashboardData?.UserData?.Explorer?parseInt(dashboardData?.UserData?.Explorer).toLocaleString():"0"}
@@ -81,9 +81,9 @@ const Home = (props) => {
                                                             <View style={{ flex: 5 }}>
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
-                                                                    ...styles.progressBarFront, width:
+                                                                    ...styles.progressBarFront, width:dashboardData?.UserData?
                                                                     (parseInt(dashboardData?.UserData?.Influencer)/
-                                                                    parseInt(dashboardData?.TotalUser))*100
+                                                                    parseInt(dashboardData?.TotalUser))*100:0
                                                                 }}></View></View>
                                                             <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
                                                             {dashboardData?.UserData?.Influencer?parseInt(dashboardData?.UserData?.Influencer).toLocaleString():"0"}
@@ -96,9 +96,9 @@ const Home = (props) => {
                                                             <View style={{ flex: 5 }}>
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
-                                                                    ...styles.progressBarFront, width:
+                                                                    ...styles.progressBarFront, width:dashboardData?.UserData?
                                                                     (parseInt(dashboardData?.UserData?.Advertiser)/
-                                                                    parseInt(dashboardData?.TotalUser))*100
+                                                                    parseInt(dashboardData?.TotalUser))*100:0
                                                                 }}></View></View>
                                                             <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
                                                             {dashboardData?.UserData?.Advertiser?parseInt(dashboardData?.UserData?.Advertiser).toLocaleString():"0"}
@@ -111,9 +111,9 @@ const Home = (props) => {
                                                             <View style={{ flex: 5 }}>
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
-                                                                    ...styles.progressBarFront, width:
+                                                                    ...styles.progressBarFront, width:dashboardData?.UserData?
                                                                     (parseInt(dashboardData?.UserData?.Bussiness)/
-                                                                    parseInt(dashboardData?.TotalUser))*100
+                                                                    parseInt(dashboardData?.TotalUser))*100:0
                                                                 }}></View></View>
                                                             <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
                                                             {dashboardData?.UserData?.Bussiness?parseInt(dashboardData?.UserData?.Bussiness).toLocaleString():"0"}
