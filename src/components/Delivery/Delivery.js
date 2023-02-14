@@ -1,11 +1,28 @@
-import React,{useState} from 'react'
-import { Text, View, StyleSheet, Pressable} from 'react-native'
+import React,{useEffect, useState} from 'react'
+import { Text, View, StyleSheet, Pressable, ActivityIndicator} from 'react-native'
 import Constants from '../../../common/Constants'
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
  const Delivery = (props) => {
     const [tabval,settabval]=useState(1)
+    const [loader,setloader]=useState(false)
     const navigation=useNavigation()
+    const getData=()=>{
+        setloader(true)
+        axios.post(`${Constants.BASE_URL}Get/DeliveryDetails`)
+        .then((response)=>{
+            setloader(false)
+            console.log("response=>",response.data);
+        })
+        .catch((error)=>{
+            setloader(false)
+            console.log("error=>",error);
+        })
+    }
+    useEffect(()=>{
+        getData()
+    },[])
     return(
         <View>
         <View style={{flexDirection:"row",marginStart:34,marginEnd:30,justifyContent:"space-between"}}>
@@ -22,6 +39,12 @@ Returns
 Cancelled
 </Text>
 </View>
+{loader?
+    <ActivityIndicator
+    size={60}
+    color={Constants.colors.primaryColor}
+    />
+    :<>
 <Pressable
 onPress={()=>navigation.navigate("/delivery-summary",{
     headText:tabval===1?"Ongoing":tabval===2?"Delivered":tabval===3?"Returns":"Cancelled",
@@ -253,6 +276,7 @@ style={{borderLeftWidth:1,borderLeftColor:"#000000"}}
 </View>
 </View>
 </Pressable>
+</>}
         </View>
     )
 }

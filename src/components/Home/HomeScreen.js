@@ -15,6 +15,7 @@ import Home from "./Home";
 import Delivery from "../Delivery/Delivery"
 import Settings from "../Settings/Settings"
 import Profile from "../Profile/Profile"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const HomeScreen=(props)=>{
     const scaleValue = useRef(new Animated.Value(1)).current
     const offsetValue = useRef(new Animated.Value(0)).current
@@ -23,14 +24,20 @@ const HomeScreen=(props)=>{
     const [activeMenu, setActiveMenu] = useState('')
     const [activeTab,setactiveTab]=useState("home")
     const [editStatus,seteditStatus]=useState(false)
+    const [UserData,setUserData]=useState()
+    const getUserData=async()=>{
+        setUserData(JSON.parse(await AsyncStorage.getItem("UserData")))
+    }
     useEffect(()=>{
+        getUserData()
         if(props?.route?.params?.type)
         setactiveTab(props?.route?.params?.type)
         seteditStatus(false)
     },[props])
     useEffect(()=>{
         seteditStatus(false)
-    },[activeTab])
+        console.log("user data=>",UserData);
+    },[activeTab,UserData])
     return(
         <View style={[globalStyles.wrapper,{backgroundColor:"#e5e5e5",height:"100%"}]}>
         {
@@ -55,13 +62,17 @@ const HomeScreen=(props)=>{
                 <View style={styles.profileDetails}>
                     <Pressable onPress={()=>setshowDrawer(!showDrawer)} style={{ zIndex: 999,position:"absolute",left:"120%",top:0 }}><AntDesign name='close' size={26}/></Pressable>
                     <View style={styles.profileIcon}>
-                        <Image source={Images.avatar} 
+                        <Image source={
+                            UserData?.image?{
+                                uri:`${Constants.BASE_IMAGE_URL}${JSON.parse(UserData?.image)}`
+                            }:
+                            Images.avatar} 
                         // style={{resizeMode:"stretch"}}
-                        // style={{ width: 60, height: '100%' }}
+                        style={{ width: 60, height: '100%' }}
                          />
                     </View>
                     <View style={{marginStart:10}}>
-                        <Text style={styles.preofileName}>Mr. User Admin</Text>
+                        <Text style={styles.preofileName}>{UserData?.gender==="Male"?"Mr":"Miss"}. {UserData?.username}</Text>
                         <Text style={styles.founder}>Admin</Text>
                     </View>
                 </View>
@@ -89,7 +100,9 @@ const HomeScreen=(props)=>{
 
             </ScrollView>
             <Pressable
-                onPress={() => navigation.navigate('/')}
+                onPress={() => {
+                    AsyncStorage.clear()
+                    navigation.navigate('/')}}
                 style={{ flexDirection: 'row', margin: 12, marginLeft: 0,marginEnd:0, backgroundColor: Constants.colors.primaryColor, padding: 16, paddingRight: 0 }}>
                 <AntDesign name='logout' size={22} color={'#fff'} style={{ marginLeft: 12 }} />
                 <Text style={{ color: '#fff', fontFamily: Constants.fontFamily, fontWeight: '700', fontSize: 18, marginLeft: 12 }}>Logout</Text>
@@ -123,7 +136,7 @@ const HomeScreen=(props)=>{
                                     }
                                     {/* <FontAwesome5Icon name="pen" size={20} style={{paddingLeft:100}}/> */}
                                     </View>
-                                    <Text style={styles.companyName}>Mr. User Admin</Text>
+                                    <Text style={styles.companyName}>{UserData?.gender==="Male"?"Mr":"Miss"}. {UserData?.username}</Text>
                                 </View>
                                 
                     </View>

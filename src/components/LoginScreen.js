@@ -16,19 +16,23 @@ import {
  import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import axios from 'axios'
 import Videos from "../assets/staticVideos/Videos"
 import Constants from '../../common/Constants'
 import Images from "../assets/images/Images"
 import Video from 'react-native-video'
 import globalStyles from "../../common/globalStyles"
+import axios from 'axios'
+import { ToastMsg } from '../../common/ToastMsg'
 const LoginScreen=(props)=>{
+    
     const navigation  = useNavigation()
     const [showPass, setShowPass] = useState(false)
     const [IsLoading, setIsLoading] = useState(false)
     const [LoginId, setLoginId] = useState('')
     const [Password, setPassword] = useState('')
+    
     const signInVerification=()=>{
+        
         if(!LoginId||LoginId==""){
             if(Platform.OS=="android")
             ToastAndroid.show('Please Enter Login Id', ToastAndroid.SHORT);
@@ -42,13 +46,37 @@ const LoginScreen=(props)=>{
             Alert.alert("Please Enter Password",{cancelable:true})
         }
         else {
-            if(Platform.OS=="android")
-            ToastAndroid.show('Login Successful.', ToastAndroid.SHORT);
-            else 
-            Alert.alert("Login Successful.",{cancelable:true})
-            navigation.navigate("/home")
+  
+            setIsLoading(true)
+
+            axios.post(`${Constants.BASE_URL}Login`,{
+                data:LoginId,
+                password:Password
+            }).then((response)=>{
+                setIsLoading(false)
+                if(response?.data?.data)
+                {AsyncStorage.setItem("UserData",JSON.stringify(response.data.data))
+                ToastMsg(`Login Successful. Welcome ${LoginId}!`,"Login Successfull",`Welcome ${LoginId}!`)
+                navigation.navigate("/home")}
+                else {
+                    ToastMsg(`Error! ${response.data.msg}`,"Error!",response.data.msg)
+                }
+            })
+            .catch((error)=>{
+                console.log("error message=>",error.message);
+                setIsLoading(false)
+                if(Platform.OS=="android")
+                ToastAndroid.show('Error while login', ToastAndroid.SHORT);
+                else 
+                Alert.alert("Error while login.",{cancelable:true})  
+            })
+
         }
     }
+    useEffect(()=>{
+        setLoginId("")
+        setPassword("")
+    },[])
     return (
         <View style={styles.background}>
         
@@ -101,7 +129,8 @@ const LoginScreen=(props)=>{
                 <Image source={Images.logo} />
                 <Text style={styles.textBelowLogo}>Welcome to Quarterpillars</Text>
                 <View style={styles.business}>
-                <Text style={styles.businessText}>Admin</Text>
+                <Text style={styles.businessText}>Admin
+                </Text>
                     <Image source={Images.adminIcon} />
                 </View>
                 {/* <Text style={styles.textBelowBusiness}>Enter Mobile Number/Email Id/Username</Text> */}
@@ -115,11 +144,14 @@ const LoginScreen=(props)=>{
                     <View style={{flex:1,width:"100%",alignItems:"flex-end"}}>
                     <Text style={styles.forgotPassLink} 
                     onPress={()=>navigation.navigate("/forgotPassword")}
-                    >Forgot Password</Text>
+                    >Forgot Password
+                    </Text>
                     </View>
                 </View>
                 <Text style={styles.belowPhoneNumber}></Text>
-                {IsLoading?<ActivityIndicator size={30} color={Constants.colors.whiteColor} />:<Pressable style={[globalStyles.button, {width: '92%', marginTop: 0,}]}
+                {IsLoading?
+                    <ActivityIndicator size={30} color={Constants.colors.whiteColor} />
+                :<Pressable style={[globalStyles.button, {width: '92%', marginTop: 0,}]}
                  onPress={signInVerification}
                  ><Text style={[globalStyles.btnText,{textTransform:"none"}]}>Sign In</Text></Pressable>}
                 

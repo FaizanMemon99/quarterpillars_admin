@@ -1,12 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Pressable, StyleSheet, Image, View, Text,TextInput, Platform } from 'react-native'
 import Images from '../../assets/images/Images'
 import Constants from '../../../common/Constants'
+import AsyncStorage from '@react-native-async-storage/async-storage'
  const Profile = (props) => {
+    const [loader,setloader]=useState(false)
+    const [userData,setuserData]=useState()
+    const [name,setname]=useState()
+    const [email,setemail]=useState()
+    const [phone,setphone]=useState()
+    const [gender,setgender]=useState()
+    const [userage,setuserage]=useState()
+    const [dob,setdob]=useState()
+    const getUserData=async()=>{
+        const data=await AsyncStorage.getItem("UserData")
+        if(data!==null)
+        {
+            setuserData(JSON.parse(data))
+            setname(JSON.parse(data).username)
+            setemail(JSON.parse(data).email)
+            setphone(JSON.parse(data).number)
+            setgender(JSON.parse(data).gender)
+            setuserage(parseInt(JSON.parse(data).age))
+            setdob(JSON.parse(data).dob)
+        }
+
+    }
+    useEffect(()=>{
+        getUserData()
+    },[])
+    
     return(
         <View>
         <Pressable style={styles.cameraContainer} >
-                                <Image source={Images.userInfoLogo} style={styles.logo} />
+                                <Image source={
+                                    userData?.image?
+                                    {url:`${Constants.BASE_IMAGE_URL}${JSON.parse(userData.image)}`}
+                                    :
+                                    Images.userInfoLogo} style={styles.logo} />
                                 <Image source={Images.cameraIcontTwo} style={styles.cameraIcon} />
                             </Pressable>
                             <View style={{justifyContent:"center",alignItems:"center",marginTop:26,marginBottom:28}}>
@@ -23,14 +54,14 @@ import Constants from '../../../common/Constants'
                             </Text>
                             {props?.editStatus?
                                 <TextInput 
-                                // value={LoginId} 
+                                value={name} 
                                 style={{
                                     marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Name' 
-                                // onChangeText={setLoginId}
+                                onChangeText={setname}
                                  />
                                 :
                                 <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
-                            Mr. User Admin
+                            {gender==="Male"?`Mr. ${name}`:`Miss. ${name}`}
                             </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
@@ -39,13 +70,13 @@ import Constants from '../../../common/Constants'
                             </Text>
                             {props?.editStatus?
                                 <TextInput 
-                                // value={LoginId} 
+                                value={email} 
                                 style={{
                                     marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Email' 
-                                // onChangeText={setLoginId}
+                                onChangeText={setemail}
                                  />
                                 :<Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
-                            johndoe@gmail.com
+                            {email?email:"-"}
                             </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
@@ -54,13 +85,13 @@ import Constants from '../../../common/Constants'
                             </Text>
                             {props?.editStatus?
                                 <TextInput 
-                                // value={LoginId} 
+                                value={phone} 
                                 style={{
                                     marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Phone Number' 
-                                // onChangeText={setLoginId}
+                                onChangeText={setphone}
                                  />
                                 :<Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
-                            +91 9827336473
+                            +91 {phone?phone:'-'}
                             </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
@@ -69,13 +100,13 @@ import Constants from '../../../common/Constants'
                             </Text>
                             {props?.editStatus?
                                 <TextInput 
-                                // value={LoginId} 
+                                value={gender} 
                                 style={{
                                     marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Gender' 
-                                // onChangeText={setLoginId}
+                                onChangeText={setgender}
                                  />
                                 :<Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
-                            -
+                            {gender?gender:"-"}
                             </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
@@ -84,13 +115,13 @@ import Constants from '../../../common/Constants'
                             </Text>
                             {props?.editStatus?
                                 <TextInput 
-                                // value={LoginId} 
+                                value={userage.toString()} 
                                 style={{
                                     marginTop: Platform.OS=="android"?-15:0,                                    width:"60%"}} placeholder='Age' 
-                                // onChangeText={setLoginId}
+                                onChangeText={setuserage}
                                  />
                                 : <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
-                            -
+                            {userage?userage:"-"}
                             </Text>}
                             </View>
                             <View style={{flexDirection:"row",width:"100%",marginTop:10}}>
@@ -99,14 +130,14 @@ import Constants from '../../../common/Constants'
                             </Text>
                             {props?.editStatus?
                                 <TextInput 
-                                // value={LoginId} 
+                                value={dob} 
                                 style={{
                                     marginTop: Platform.OS=="android"?-15:0,
                                     width:"60%"}} placeholder='DOB' 
-                                // onChangeText={setLoginId}
+                                onChangeText={setdob}
                                  />
                                 : <Text style={[styles.text,{fontSize:14,color:"#484848",fontWeight:"700",width:"60%"}]}>
-                            -
+                            {dob?dob:"-"}
                             </Text>}
                             </View>
                             </View>

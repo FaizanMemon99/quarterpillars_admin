@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Routes from './routes';
 import SplashScreen from "react-native-splash-screen"; //import SplashScreen
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const App = () => {
 

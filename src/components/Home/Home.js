@@ -1,14 +1,39 @@
-import React from 'react'
-import { Text, View, StyleSheet,Image } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Text, View, StyleSheet,Image, ActivityIndicator } from 'react-native'
 import Images from '../../assets/images/Images'
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import Constants from '../../../common/Constants'
 import AntDesign from "react-native-vector-icons/AntDesign"
 import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import axios from 'axios'
 const Home = (props) => {
     const navigation=useNavigation()
+    const[UserData,setUserData]=useState()
+    const [dashboardData,setdashboardData]=useState()
+    const [loader,setloader]=useState(false)
+    const getUserData=async()=>{
+        setloader(true)
+        setUserData(JSON.parse(await AsyncStorage.getItem("UserData")))
+        axios.post(`${Constants.BASE_URL}Get/Dashboard/Details`)
+        .then((response)=>{
+            setloader(false)
+            if(response.data.Data)
+            console.log("repson",response.data.Data);
+            setdashboardData(response.data.Data)
+        })
+        .catch((error)=>{
+            setloader(false)
+            console.log("error=>",error);
+        })
+    }
+    
+    useEffect(()=>{
+        getUserData()
+    },[])
     return(
         <View >
+        
         <View style={styles.revenueBox}>
         <View style={styles.totalRevenue}>
         <View>
@@ -18,14 +43,23 @@ const Home = (props) => {
     </View>
         </View>
             <View>
-                <Text style={styles.totalRevinue}><FontAwesome size={18} name='rupee'/> 11,12,001</Text>
+                <Text style={[styles.totalRevinue,{textAlign:"center"}]}>{dashboardData?.TotalUser?dashboardData?.TotalUser:0}</Text>
                 <View style={styles.percentage}>
-                    <AntDesign name='arrowup' size={22} color={Constants.colors.primaryColor} />
-                    <Text style={styles.numberInPercentage}>5.86%</Text>
+                    <AntDesign name={dashboardData?.Arrow?dashboardData?.Arrow==="Down"?'arrowdown':"arrowup":""} size={22} 
+                    color={dashboardData?.Arrow?dashboardData?.Arrow==="Down"?"red":Constants.colors.primaryColor:Constants.colors.primaryColor}
+                    />
+                    <Text style={[styles.numberInPercentage,{color:dashboardData?.Arrow?dashboardData?.Arrow==="Down"?"red":Constants.colors.primaryColor:Constants.colors.primaryColor}]}>
+                    {dashboardData?.Percentage?parseFloat(dashboardData?.Percentage).toFixed(2):"0.00"}
+                    %</Text>
                 </View>
             </View>
             
     </View>
+{
+    loader?
+    <ActivityIndicator size={60} color={Constants.colors.primaryColor} style={{marginTop:20}}/>
+    :
+    <>    
     <View style={[styles.tabContent,{marginTop:18}]}>
                                                         <Text style={styles.cityName}>Explore</Text>
                                                         <View style={styles.progressBar}>
@@ -33,9 +67,12 @@ const Home = (props) => {
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
                                                                     ...styles.progressBarFront, width:
-                                                                        "50%"
+                                                                        (parseInt(dashboardData?.UserData?.Explorer)/
+                                                                        parseInt(dashboardData?.TotalUser))*100
                                                                 }}></View></View>
-                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 9,434</Text>
+                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
+                                                            {dashboardData?.UserData?.Explorer?parseInt(dashboardData?.UserData?.Explorer).toLocaleString():"0"}
+                                                            </Text>
                                                         </View>
                                         </View>
                                         <View style={styles.tabContent}>
@@ -45,9 +82,12 @@ const Home = (props) => {
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
                                                                     ...styles.progressBarFront, width:
-                                                                        "40%"
+                                                                    (parseInt(dashboardData?.UserData?.Influencer)/
+                                                                    parseInt(dashboardData?.TotalUser))*100
                                                                 }}></View></View>
-                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 12,344</Text>
+                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
+                                                            {dashboardData?.UserData?.Influencer?parseInt(dashboardData?.UserData?.Influencer).toLocaleString():"0"}
+                                                            </Text>
                                                         </View>
                                         </View>
                                         <View style={styles.tabContent}>
@@ -57,9 +97,12 @@ const Home = (props) => {
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
                                                                     ...styles.progressBarFront, width:
-                                                                        "70%"
+                                                                    (parseInt(dashboardData?.UserData?.Advertiser)/
+                                                                    parseInt(dashboardData?.TotalUser))*100
                                                                 }}></View></View>
-                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 23,456</Text>
+                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
+                                                            {dashboardData?.UserData?.Advertiser?parseInt(dashboardData?.UserData?.Advertiser).toLocaleString():"0"}
+                                                            </Text>
                                                         </View>
                                         </View>
                                         <View style={styles.tabContent}>
@@ -69,22 +112,34 @@ const Home = (props) => {
                                                                 <View style={styles.progressBarBg}></View>
                                                                 <View style={{
                                                                     ...styles.progressBarFront, width:
-                                                                        "60%"
+                                                                    (parseInt(dashboardData?.UserData?.Bussiness)/
+                                                                    parseInt(dashboardData?.TotalUser))*100
                                                                 }}></View></View>
-                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 15,343</Text>
+                                                            <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 
+                                                            {dashboardData?.UserData?.Bussiness?parseInt(dashboardData?.UserData?.Bussiness).toLocaleString():"0"}
+                                                            </Text>
                                                         </View>
-                                        </View>
+                                        </View></>}
                                         </View>
                                         <View style={{marginTop:32,marginLeft:30,marginRight:30}}>
                                         <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
                                         <Text style={styles.compaintText}>
-                                        New Complaints (42)
+                                        New Complaints ({dashboardData?.TotalComplaints?dashboardData?.TotalComplaints:0})
                                         </Text>
                                         <Text style={styles.viewAllText} onPress={()=>navigation.navigate("/view-user")}>
                                         View All
                                         </Text>
                                         </View>
-                                        <View style={{flexDirection:"row",marginTop:20,borderBottom: "3px solid rgba(204, 204, 204, 0.19)"}}>
+                                        {loader?
+                                            <ActivityIndicator
+                                            color={Constants.colors.primaryColor}
+                                            size={60}
+                                            style={{marginTop:20}}
+                                            />
+                                            :
+                                            dashboardData?.Complaints?.length>0?
+                                            dashboardData?.Complaints?.map((data,index)=><>
+                                            <View style={{flexDirection:"row",marginTop:20,borderBottom: "3px solid rgba(204, 204, 204, 0.19)"}}>
                                         <View >
                                         <Image style={styles.profileIcon} source={Images.avatar}/>
                                         </View>
@@ -92,67 +147,39 @@ const Home = (props) => {
                                         <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
                                         <View style={{flexDirection:"row",alignItems:"center"}}>
                                         <Text style={styles.complaintInText}>
-                                        Mark soel
+                                        {data?.UserName?data?.UserName:"-"}
                                         </Text>
                                         <View style={styles.boxStyle}>
                                         <Text style={styles.boxText}>
-                                        Explore
+                                        {data?.Type?data?.Type:"-"}
                                         </Text>
                                         </View>
                                         </View>
                                         <Text style={styles.minText}>
-                                        45 mins ago
+                                        {data?.Timedif?data?.Timedif:"-"}
                                         </Text>
                                         </View>
                                         <View>
                                         <Text style={styles.mailText}>
-                                        mark.soel34@gmail.com
+                                        {data?.UserEmail?data?.UserEmail:"-"}
                                         </Text>
                                         </View>
                                         <View style={{marginTop:6}}>
                                         <Text style={styles.minText}>
-                                        Description goes here and it ca goes here and it ca goes here and it ca nbe very...
+                                        {data?.ComplaintDesc?data?.ComplaintDesc:"-"}
                                         </Text>
                                         </View>
                                         </View>
                                         </View>
-                                        <View
+{index!==dashboardData?.Complaints?.length-1?                                        <View
                                         style={{borderWidth: 2,
                                             borderColor: 'rgba(204, 204, 204, 0.49)',marginTop:20}}
-                                        />
-                                        <View style={{flexDirection:"row",marginTop:20,
-                                        }}>
-                                        <View >
-                                        <Image style={styles.profileIcon} source={Images.avatar}/>
-                                        </View>
-                                        <View style={{flex:6,marginStart:14}}>
-                                        <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
-                                        <View style={{flexDirection:"row",alignItems:"center"}}>
-                                        <Text style={styles.complaintInText}>
-                                        Mark soel
+                                        />:null}
+                                        </>):
+                                        <Text>
+                                        No Complaints found
                                         </Text>
-                                        <View style={styles.boxStyle}>
-                                        <Text style={styles.boxText}>
-                                        Explore
-                                        </Text>
-                                        </View>
-                                        </View>
-                                        <Text style={styles.minText}>
-                                        45 mins ago
-                                        </Text>
-                                        </View>
-                                        <View>
-                                        <Text style={styles.mailText}>
-                                        mark.soel34@gmail.com
-                                        </Text>
-                                        </View>
-                                        <View style={{marginTop:6}}>
-                                        <Text style={styles.minText}>
-                                        Description goes here and it ca goes here and it ca goes here and it ca nbe very...
-                                        </Text>
-                                        </View>
-                                        </View>
-                                        </View>
+                                    }
                                         </View>
         </View>
     )

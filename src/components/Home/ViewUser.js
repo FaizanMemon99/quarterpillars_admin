@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
-import { View,Text, StyleSheet,Image, ScrollView, Pressable } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View,Text, StyleSheet,Image, ScrollView, Pressable, ActivityIndicator } from 'react-native'
 import Constants from '../../../common/Constants'
 import Pageformat from '../../../common/Pageformat'
 import Images from '../../assets/images/Images'
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import AntDesign from "react-native-vector-icons/AntDesign"
+import axios from 'axios'
 // import PieChart from 'react-native-pie-chart';
 // import LineChart from 'react-native-chart-kit'
 
 const ViewUser = (props) => {
     const [tabval,settabval]=useState(1)
     const [tabs, setTabs] = useState('city')
+    const [userDetails,setuserDetails]=useState()
+    const [loader,setloader]=useState(false)
     const chartConfig = {
         backgroundGradientFrom: "#FFFFFF",
         backgroundGradientFromOpacity: 0,
@@ -39,7 +42,26 @@ const ViewUser = (props) => {
             }
         ],
     }
-
+const getUserDetails=()=>{
+    setloader(true)
+    axios.post(`${Constants.BASE_URL}Get/UsersDetails`)
+    .then((response)=>{
+        setloader(false)
+        if(response.data.data)
+        {
+            
+            setuserDetails(response.data.data)
+        }
+        
+    })
+    .catch((error)=>{
+        setloader(false)
+        console.log("error=>",error);
+    })
+}
+useEffect(()=>{
+    getUserDetails()
+},[])
 
     return(
 <View style={{height:"100%"}}>
@@ -71,15 +93,39 @@ Business
 </View>
 </View>
     <View>
-        <Text style={styles.totalRevinue}><FontAwesome size={18} name='rupee'/> 11,12,001</Text>
+        <Text style={[styles.totalRevinue,{textAlign:"center"}]}>
+        {tabval===1?userDetails?.Explore?.TotalUser:
+            tabval===2?userDetails?.Influencer?.TotalUser:
+            tabval===3?userDetails?.Advertiser?.TotalUser:
+            tabval===4?userDetails?.Business?.TotalUser:"0"}
+        </Text>
         <View style={styles.percentage}>
-            <AntDesign name='arrowup' size={22} color={Constants.colors.primaryColor} />
-            <Text style={styles.numberInPercentage}>5.86%</Text>
+            <AntDesign name={tabval===1?userDetails?.Explore?.Arrow==="down"?"arrowdown":"arrowup":
+            tabval===2?userDetails?.Influencer?.Arrow==="down"?"arrowdown":"arrowup":
+            tabval===3?userDetails?.Advertiser?.Arrow==="down"?"arrowdown":"arrowup":
+            tabval===4?userDetails?.Business?.Arrow==="down"?"arrowdown":"arrowup":""} size={22} 
+            color={tabval===1?userDetails?.Explore?.Arrow==="down"?"red":Constants.colors.primaryColor:
+            tabval===2?userDetails?.Influencer?.Arrow==="down"?"red":Constants.colors.primaryColor:
+            tabval===3?userDetails?.Advertiser?.Arrow==="down"?"red":Constants.colors.primaryColor:
+            tabval===4?userDetails?.Business?.Arrow==="down"?"red":Constants.colors.primaryColor:"red"}
+            />
+            <Text style={styles.numberInPercentage}>
+            {tabval===1?userDetails?.Explore?.Percentage?parseFloat(userDetails?.Explore?.Percentage).toFixed(2):"0.00":
+                tabval===2?userDetails?.Influencer?.Percentage?parseFloat(userDetails?.Influencer?.Percentage).toFixed(2):"0.00":
+                tabval===3?userDetails?.Advertiser?.Percentage?parseFloat(userDetails?.Advertiser?.Percentage).toFixed(2):"0.00":
+                tabval===4?userDetails?.Business?.Percentage?parseFloat(userDetails?.Business?.Percentage).toFixed(2):"0.00":"0.00"}
+            %</Text>
         </View>
     </View>
     
 </View>
-<View style={[styles.tabContent,{marginTop:18}]}>
+{loader?
+    <ActivityIndicator
+    size={60}
+    color={Constants.colors.primaryColor}
+    />
+    :<>
+    <View style={[styles.tabContent,{marginTop:18}]}>
                                                 <Text style={styles.cityName}>Travel</Text>
                                                 <View style={styles.progressBar}>
                                                     <View style={{ flex: 5 }}>
@@ -127,13 +173,22 @@ Business
                                                     <Text style={{ flex: 1,color:Constants.colors.primaryColor,fontWeight:"500" }}> 15,343</Text>
                                                 </View>
                                 </View>
+                            </>
+                        }
                                 </View>
                                 <View style={styles.countryWise}>
                                 <View style={styles.tabContainer}>
                                     <Pressable onPress={() => setTabs('city')} style={{ ...styles.tabs, backgroundColor: tabs === 'city' ? Constants.whiteColor : 'rgba(229, 235, 237, 0.38)', }}><Text style={{ ...styles.tabText, fontWeight: tabs === 'city' ? '800' : '400', }}>Cities</Text></Pressable>
                                     <Pressable onPress={() => setTabs('country')} style={{ ...styles.tabs, backgroundColor: tabs === 'country' ? Constants.whiteColor : 'rgba(229, 235, 237, 0.38)', }}><Text style={{ ...styles.tabText, fontWeight: tabs === 'country' ? '800' : '400', }}>Countries</Text></Pressable>
                                 </View>
-                                {tabs==="city"?
+                                {loader?
+                                    <ActivityIndicator
+                                    size={60}
+    color={Constants.colors.primaryColor}
+                                    />
+                                    :
+                                    
+                                    tabs==="city"?
                                 <>
                                 <View style={[styles.tabContent,{marginTop:18,marginEnd:20,
                                     marginStart:20}]}>
